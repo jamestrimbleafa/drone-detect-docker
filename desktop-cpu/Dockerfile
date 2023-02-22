@@ -13,5 +13,6 @@ RUN apt install -y python3 python3-opencv python3-pip
 RUN pip install numpy
 RUN pip install tensorflow
 RUN pip install pillow
+RUN wget https://raw.githubusercontent.com/jamestrimbleafa/drone-detect-docker/main/src/RunModelImages.py
 
-ENTRYPOINT [ "python3 RunModelImages.py" ]
+CMD python3 RunModelImages.py
