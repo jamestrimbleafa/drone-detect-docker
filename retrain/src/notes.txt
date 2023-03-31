@@ -1,6 +1,7 @@
 The Raccoon_Dataset repo on GitHub has some really useful scripts.
 
 generate_tfrecord: python3 generate_tfrecord.py --csv_input=/home/dfec/Documents/DroneDataPrep/drone_train_labels.csv --output_path=/home/dfec/Documents/DroneDataPrep/ --image_dir=/home/dfec/Documents/DroneTrainDataset/Drone_TrainSet/
+run docker container: sudo docker run -it --runtime=nvidia --gpus all tensorflow/tensorflow:1.2.1-devel-gpu-py3 /bin/bash
 
 Pre-reqs: python3, cuda, pip, pandas, tensorflow, tensorflow object detection api, numpy, protoc (apt install protobuf-compiler)
 
@@ -11,6 +12,7 @@ Useful sites:
 -- https://towardsdatascience.com/how-to-install-tensorflow-2-object-detection-api-on-windows-2eef9b7ae869
 -- https://stackoverflow.com/questions/58258003/attributeerror-module-tensorflow-has-no-attribute-app
 -- https://blog.raccoons.be/coral-tpu-jetson-nano-performance
+-- https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#docker
 
 1. Get the training data.  This should be in the form of images and xml files that describe the image and the location of the drone
 2. Convert the XMLs into a consolidated CSV.  The Recoon_Dataset repo has a nice XML_to_CSV python script.  Just set the image path and filename.  This script required pandas to be installed.
