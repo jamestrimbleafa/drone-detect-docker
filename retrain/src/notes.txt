@@ -1,0 +1,20 @@
+The Raccoon_Dataset repo on GitHub has some really useful scripts.
+
+generate_tfrecord: python3 generate_tfrecord.py --csv_input=/home/dfec/Documents/DroneDataPrep/drone_train_labels.csv --output_path=/home/dfec/Documents/DroneDataPrep/ --image_dir=/home/dfec/Documents/DroneTrainDataset/Drone_TrainSet/
+
+Pre-reqs: python3, cuda, pip, pandas, tensorflow, tensorflow object detection api, numpy, protoc (apt install protobuf-compiler)
+
+Useful sites:
+-- https://medium.com/coinmonks/part-1-2-step-by-step-guide-to-data-preparation-for-transfer-learning-using-tensorflows-object-ac45a6035b7a
+-- https://wandb.ai/wandb/common-ml-errors/reports/How-to-Correctly-Install-TensorFlow-Object-Detection-API--VmlldzozNTM5ODg
+-- https://coral.ai/docs/edgetpu/retrain-detection/#using-the-coral-usb-accelerator
+-- https://towardsdatascience.com/how-to-install-tensorflow-2-object-detection-api-on-windows-2eef9b7ae869
+-- https://stackoverflow.com/questions/58258003/attributeerror-module-tensorflow-has-no-attribute-app
+
+1. Get the training data.  This should be in the form of images and xml files that describe the image and the location of the drone
+2. Convert the XMLs into a consolidated CSV.  The Recoon_Dataset repo has a nice XML_to_CSV python script.  Just set the image path and filename.  This script required pandas to be installed.
+3. Install TensorFlow and the TF object detection api.  
+4. Consolidate the data into a TFRecord.  The TFRecord is a way to package up all of your data in a format that's more efficient for TF.  The generate_tfrecord.py script from the Raccoon_Dataset repo can generate the file.  You need to pass it the paths to the csv, the output folder, and the image folder.
+-- eg: python3 generate_tfrecord -csv_input -output_path -image_dir
+
+
