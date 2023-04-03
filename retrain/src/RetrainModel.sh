@@ -16,7 +16,7 @@ else
 fi
 
 if [ -d "$TEST_PATH" ]; then
-    if [ "$(ls -A $TEST_PATH)"]; then
+    if [ "$(ls -A $TEST_PATH)" ]; then
         echo "Testing Data found."
     else
         echo "Testing Data not found."
@@ -28,7 +28,7 @@ else
 fi
 
 # Check that the csv files exist.  If not, regenerate them.
-if [ -f "$TRAIN_PATH/drone_train_labels.csv"]; then
+if [ -f "$TRAIN_PATH/drone_train_labels.csv" ]; then
     echo "Training CSV found."
 else
     # If no CSV is found, rebuild the CSV file.
@@ -36,7 +36,7 @@ else
     python xml_to_csv.py $TRAIN_PATH/Drone_TrainSet_XMLs/ $TRAIN_PATH/drone_train_labels.csv
 fi
 
-if [ -f "$TEST_PATH/drone_test_labels.csv"]; then
+if [ -f "$TEST_PATH/drone_test_labels.csv" ]; then
     echo "Testing CSV found."
 else
     # If no CSV is found, rebuild the CSV file.

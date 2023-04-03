@@ -1,7 +1,7 @@
 The Raccoon_Dataset repo on GitHub has some really useful scripts.
 
 generate_tfrecord: python3 generate_tfrecord.py --csv_input=/home/dfec/Documents/DroneDataPrep/drone_train_labels.csv --output_path=/home/dfec/Documents/DroneDataPrep/ --image_dir=/home/dfec/Documents/DroneTrainDataset/Drone_TrainSet/
-run docker container: sudo docker run -it --runtime=nvidia --gpus all tensorflow/tensorflow:1.2.1-devel-gpu-py3 /bin/bash
+run docker container: sudo docker run -it --runtime=nvidia --gpus all --mount type=bind,source=/home/james/Downloads/DroneTrainDataset,target=/app/DroneTrainDataset --mount type=bind,source=/home/james/Downloads/DroneTestDataset,target=/app/DroneTestDataset retrain /bin/bash
 
 Pre-reqs: python3, cuda, pip, pandas, tensorflow, tensorflow object detection api, numpy, protoc (apt install protobuf-compiler)
 
