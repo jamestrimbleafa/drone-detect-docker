@@ -1,4 +1,5 @@
 import os
+import sys
 import glob
 import pandas as pd
 import xml.etree.ElementTree as ET
@@ -26,11 +27,11 @@ def xml_to_csv(path):
 
 
 def main():
-    #image_path = os.path.join(os.getcwd(), 'annotations')
-    #image_path = "/home/dfec/Documents/DroneTrainDataset/Drone_TrainSet_XMLs" #Training Set
-    image_path = "/home/dfec/Documents/DroneTestDataset/Drone_TestSet_XMLs"
-    xml_df = xml_to_csv(image_path)
-    xml_df.to_csv('drone_test_labels.csv', index=None)
+    # Takes the path to the xml files as the first argument and the path to the output csv as the second argument
+    xml_path = sys.argv[1]
+    csv_path = sys.argv[2]
+    xml_df = xml_to_csv(xml_path)
+    xml_df.to_csv(csv_path, index=None)
     print('Successfully converted xml to csv.')
 
 
