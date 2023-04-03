@@ -1,4 +1,4 @@
-FROM tensorflow/tensorflow:1.2.1-devel-gpu-py3
+FROM tensorflow/tensorflow:1.2.1-gpu-py3
 ENV FILEID=1FH-eifS6j8-Wo-ELcB-c1MdcdT3K5_HI
 ENV FILENAME=PaperBasedANNModels.zip
 ARG DEBIAN_FRONTEND=noninteractive
