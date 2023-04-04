@@ -52,7 +52,7 @@ if [ -f "$TRAIN_PATH/train.record" ]; then
 else
     # If no CSV is found, rebuild the CSV file.
     echo "Training TFRecord not found.  Building TFRecord."
-    python3 generate_tfrecord.py --csv_input=$TRAIN_PATH/drone_train_labels.csv  --image_dir=$TRAIN_PATH/Drone_TrainSet/ --output_path=$TRAIN_PATH/train.record
+    python3.7 generate_tfrecord.py --csv_input=$TRAIN_PATH/drone_train_labels.csv  --image_dir=$TRAIN_PATH/Drone_TrainSet/ --output_path=$TRAIN_PATH/train.record
 fi
 
 if [ -f "$TEST_PATH/test.record" ]; then
@@ -60,7 +60,7 @@ if [ -f "$TEST_PATH/test.record" ]; then
 else
     # If no CSV is found, rebuild the CSV file.
     echo "Testing TFRecord not found.  Building TFRecord."
-    python3 generate_tfrecord.py --csv_input=$TEST_PATH/drone_test_labels.csv  --image_dir=$TEST_PATH/Drone_TestSet/ --output_path=$TEST_PATH/test.record
+    python3.7 generate_tfrecord.py --csv_input=$TEST_PATH/drone_test_labels.csv  --image_dir=$TEST_PATH/Drone_TestSet/ --output_path=$TEST_PATH/test.record
 fi
 
 # 
