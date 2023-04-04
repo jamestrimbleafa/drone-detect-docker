@@ -48,13 +48,21 @@ WORKDIR /app
 
 RUN apt install -y unzip
 
-RUN apt install -y python-opencv python-pip nano
-RUN python3 -m pip install pandas
-RUN python3 -m pip install Cython
-RUN python3 -m pip install contextlib2
-RUN python3 -m pip install jupyter
-RUN python3 -m pip install matplotlib
-RUN python3 -m pip install "numpy == 1.13.1"
+RUN wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+RUN sh Miniconda3-latest-Linux-x86_64.sh -b -f
+RUN export PATH=$PATH:/root/miniconda3/bin
+RUN wget https://raw.githubusercontent.com/datitran/raccoon_dataset/master/environment.yml
+RUN conda env create --name raccoon --file=environment.yml
+RUN conda activate raccoon
+# TODO: Remove !!python/tuple, remove jlaura and menpo, add - free channel
+
+#RUN apt install -y python-opencv python-pip nano
+#RUN python3 -m pip install pandas
+#RUN python3 -m pip install Cython
+#RUN python3 -m pip install contextlib2
+#RUN python3 -m pip install jupyter
+#RUN python3 -m pip install matplotlib
+#RUN python3 -m pip install "numpy == 1.13.1"
 #RUN python3 -m pip install numpy 
 
 RUN apt install -y git
