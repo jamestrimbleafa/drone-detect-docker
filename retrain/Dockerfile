@@ -24,34 +24,41 @@ RUN apt update
 RUN apt install -y wget
 
 RUN apt install -y build-essential libssl-dev libffi-dev python3-dev python3 python3-pip
-RUN apt install -y protobuf-compiler python-pil python-lxml python-tk
+RUN apt install -y python-pil python-lxml python-tk
+
+RUN wget https://github.com/google/protobuf/releases/download/v3.3.0/protoc-3.3.0-linux-x86_64.zip
+RUN unzip protoc-3.3.0-linux-x86_64.zip
+RUN cp ./bin/protoc /usr/bin/protoc
 
 # Install Python 3.7
-RUN apt install -y build-essential checkinstall
-RUN apt install -y libreadline-gplv2-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev
+#RUN apt install -y build-essential checkinstall
+#RUN apt install -y libreadline-gplv2-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev
 
-WORKDIR /usr/src
-RUN wget https://www.python.org/ftp/python/3.7.9/Python-3.7.9.tgz
-RUN tar zxvf Python-3.7.9.tgz
-WORKDIR /usr/src/Python-3.7.9
-RUN ./configure --enable-optimizations
-RUN make altinstall
+#WORKDIR /usr/src
+#RUN wget https://www.python.org/ftp/python/3.7.9/Python-3.7.9.tgz
+#RUN tar zxvf Python-3.7.9.tgz
+#WORKDIR /usr/src/Python-3.7.9
+#RUN ./configure --enable-optimizations
+#RUN make altinstall
 
 WORKDIR /app
 
-RUN python3.7 -m pip install --upgrade pip
-RUN python3.7 -m pip install tensorflow
+#RUN python3 -m pip install --upgrade pip
+#RUN python3 -m pip install tensorflow
 
 RUN apt install -y unzip
 
 RUN apt install -y python-opencv python-pip nano
-RUN python3.7 -m pip install pandas numpy
-RUN python3.7 -m pip install Cython
-RUN python3.7 -m pip install contextlib2
-RUN python3.7 -m pip install jupyter
-RUN python3.7 -m pip install matplotlib
+RUN python3 -m pip install pandas
+RUN python3 -m pip install Cython
+RUN python3 -m pip install contextlib2
+RUN python3 -m pip install jupyter
+RUN python3 -m pip install matplotlib
+RUN python3 -m pip install "numpy == 1.13.1"
+#RUN python3 -m pip install numpy 
+
 RUN apt install -y git
-RUN python3.7 -m pip install tensorflow-object-detection-api
+RUN python3 -m pip install tensorflow-object-detection-api
 
 #WORKDIR /usr/local/lib/python3.7/site-packages/tensorflow/
 #RUN git clone https://github.com/tensorflow/models
@@ -65,7 +72,7 @@ RUN python3.7 -m pip install tensorflow-object-detection-api
 #RUN ls
 #RUN cp -r pycocotools /usr/local/lib/python3.7/site-packages/tensorflow/models/research/
 
-#WORKDIR /app
+WORKDIR /app
 ##RUN wget https://github.com/protocolbuffers/protobuf/releases/download/v22.2/protoc-22.2-linux-x86_64.zip
 #RUN wget https://github.com/google/protobuf/releases/download/v3.3.0/protoc-3.3.0-linux-x86_64.zip
 ##RUN unzip protoc-22.2-linux-x86_64.zip
